@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/brawlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,12 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#FF99CC"
-                android:title="Home">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="300dp"
-                    android:src="@mipmap/magnifying_glass" />
+                app:title="Home">
             </androidx.appcompat.widget.Toolbar>
 
 
@@ -36,15 +30,7 @@
                 android:id="@+id/ViewFlipper"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
-                <ImageView
-                    android:src="@mipmap/ic_launcher"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
             </ViewFlipper>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
             <LinearLayout
                 android:background="#FFCCFF	"
                 android:orientation="vertical"
