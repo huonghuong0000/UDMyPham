@@ -17,6 +17,12 @@ import java.util.ArrayList;
 public class categoryAdapter extends BaseAdapter {
     ArrayList<category> arrcategory;
     Context context;
+
+    public categoryAdapter(ArrayList<category> arrcategory, Context context) {
+        this.arrcategory = arrcategory;
+        this.context = context;
+    }
+
     @Override
     public int getCount() {
         return arrcategory.size();
@@ -34,24 +40,30 @@ public class categoryAdapter extends BaseAdapter {
 
     public class ViewHolder{
         TextView txtCategory;
-        ImageView imagCategory;
+        ImageView imageCategory;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
-        if(view == null){
+        if (view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_category, null);
-            viewHolder.txtCategory = view.findViewById(R.id.txtLoaiSP);
-            viewHolder.imagCategory = view.findViewById(R.id.imageCategory);
+            viewHolder.txtCategory = view.findViewById(R.id.txtCategory);
+            viewHolder.imageCategory = view.findViewById(R.id.imageCategory);
             view.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
-            category category = (category) getItem(i);
-            viewHolder.txtCategory.setText(category.getTenloaisp());
         }
-        return null;
+        category category = (category) getItem(i);
+        viewHolder.txtCategory.setText(category.getTenloaisp());
+        //lấy ảnh
+        Picasso.with(context).load(category.getImage())
+                .placeholder(R.drawable.noimage)
+                .error(R.drawable.error)
+                .into(viewHolder.imageCategory);
+        return view;
     }
+
 }
